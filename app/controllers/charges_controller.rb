@@ -1,7 +1,7 @@
 class ChargesController < ApplicationController
 
   def new
-
+      @phone_number = params[:p]
   end
 
   def create
@@ -9,7 +9,6 @@ class ChargesController < ApplicationController
     @amount = 500
 
     customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
       :source => params[:stripeToken]
     )
 
@@ -20,9 +19,7 @@ class ChargesController < ApplicationController
       :currency     => 'usd'
     )
 
-    logger.info "*" * 80
-    logger.info params
-    logger.info "*" * 80
+    
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

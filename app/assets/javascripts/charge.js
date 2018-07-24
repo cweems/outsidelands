@@ -1,4 +1,10 @@
 $(document).ready(function(){
+
+  var cleave = new Cleave('#phone-input', {
+    delimiters: ['+1 (', ') ', '-'],
+    blocks: [0, 3, 3, 4],
+  });
+
   var stripe = Stripe($('meta[name="stripe-key"]').attr('content'));
 
   // Create an instance of Elements
@@ -9,10 +15,9 @@ $(document).ready(function(){
   var style = {
     base: {
       color: '#32325d',
-      lineHeight: '24px',
       fontFamily: 'Helvetica Neue',
       fontSmoothing: 'antialiased',
-      fontSize: '16px',
+      fontSize: '1.25rem',
       '::placeholder': {
         color: '#aab7c4'
       }
