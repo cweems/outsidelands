@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
+  <head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= tag :meta, :name => "stripe-key", :content => ENV['PUBLISHABLE_KEY'] %>
+  </head>
+  <body id="charges-bg">
+    <%= image_tag('outsidelands-logo', id: 'outsidelands-logo', width: '250') %>
     <%= yield %>
   </body>
 </html>
+<script src="https://js.stripe.com/v3/"></script>

@@ -1,18 +1,19 @@
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $5.00</span>
-    </label>
-  </article>
+<%= form_tag charges_path, :id => 'payment-form' do %>
+  <div class="form-row">
+    <h1>
+      <label for="card-element">
+        Outsidelands Works Donation Form
+      </label>
+    </h1>
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+    
+    <!-- Used to display form errors. -->
+    <div id="card-errors" role="alert"></div>
+  </div>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"
-          data-locale="auto"></script>
+  <button>Submit Payment</button>
 <% end %>
+
+<%= javascript_include_tag 'application' %>
