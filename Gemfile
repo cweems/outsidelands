@@ -8,6 +8,8 @@ ruby '2.5.1'
 gem 'stripe'
 gem 'jquery-rails'
 gem 'figaro'
+gem 'devise'
+gem 'activeadmin'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
