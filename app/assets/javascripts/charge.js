@@ -36,7 +36,7 @@ $(document).ready(function(){
 
   // Handle real-time validation errors from the card Element.
   card.addEventListener('change', function(event) {
-    const displayError = document.getElementById('card-errors');
+    var displayError = document.getElementById('card-errors');
     if (event.error) {
       displayError.textContent = event.error.message;
     } else {
