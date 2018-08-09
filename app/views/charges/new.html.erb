@@ -1,21 +1,35 @@
 <%= form_tag charges_path, :id => 'payment-form' do %>
   <div>
-    <h1>
-      <label for="card-element">
-        Outsidelands Works Donation Form
-      </label>
-    </h1>
+    <p class="text-center text-secondary mt-3">
+      Dontation Amount:
+    </p>
+    <div class="text-center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-lg btn-primary">
+          <input type="radio" name="options" id="option1" autocomplete="off"> $5
+        </label>
+        <label class="btn btn-lg btn-primary active">
+          <input type="radio" name="options" id="option2" autocomplete="off"> $10
+        </label>
+        <label class="btn btn-lg btn-primary">
+          <input type="radio" name="options" id="option3" autocomplete="off"> $20
+        </label>
+        <label class="btn btn-lg btn-primary">
+          <input type="radio" name="options" id="option3" autocomplete="off"> $50
+        </label>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-12">
-        <label>Phone number</label>
+      <div class="col-12 mt-3">
+        <label class="text-secondary">Phone number</label>
         <input id="phone-input" class="form-control form-control-lg" style="text-align: center" type="text" value="<%=@phone_number%>">
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-12">
-        <label>Payment</label>
-        <div id="card-element">
+        <label class="text-secondary">Payment</label>
+        <div id="card-element" class="form-control form-control-lg">
         <!-- A Stripe Element will be inserted here. -->
         </div>
       <div>
@@ -29,7 +43,7 @@
 
     <div class="row">
       <div class="col">
-        <button type="button" class="btn btn-primary">Submit Payment</button>
+        <button type="submit" class="btn btn-primary">Submit Payment</button>
       <div>
     </div>
 

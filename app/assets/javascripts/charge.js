@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
   var cleave = new Cleave('#phone-input', {
-    delimiters: ['+1 (', ') ', '-'],
-    blocks: [0, 3, 3, 4],
+    delimiters: ['(', ') ', '-'],
+    blocks: [2, 3, 3, 4],
   });
 
   var stripe = Stripe($('meta[name="stripe-key"]').attr('content'));
@@ -47,6 +47,7 @@ $(document).ready(function(){
   // Handle form submission
   var form = document.getElementById('payment-form');
   form.addEventListener('submit', function(event) {
+    console.log('submit')
     event.preventDefault();
 
     stripe.createToken(card).then(function(result) {
