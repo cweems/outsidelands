@@ -6,20 +6,20 @@
     <%= tag :meta, :name => "stripe-key", :content => ENV['PUBLISHABLE_KEY'] %>
 
     <meta property="og:title" content="Donate to Outside Lands Works" />
-    <meta property="og:image" content="<%= image_path('OLWorks-logo-blue.png') %>" />
+    <meta property="og:image" content="https://wine-cichlid-7707.twil.io/assets/OLWorks-logo-blue.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   </head>
   <body id="charges-bg" class="container">
     <div class="mt-3 mb-3 card">
       <div class="card-body">
-        <%= image_tag('OLWorks-logo-blue.png', id: 'ol-works-logo') %>
+        <%= image_tag('https://wine-cichlid-7707.twil.io/assets/OLWorks-logo-blue.png', id: 'ol-works-logo') %>
         <%= yield %>
 
         <p class="text-center text-secondary mt-3">
           Presented by:
         </p>
-        <%= image_tag('outsidelands-logo.png', id: 'outsidelands-logo', width: '250') %>
+        <%= image_tag('https://wine-cichlid-7707.twil.io/assets/outsidelands-logo.png', id: 'outsidelands-logo', width: '250') %>
         <div class="text-center mt-3">
           <a href="https://www.sfoutsidelands.com/privacy-policy/">Privacy Policy | </a>
           <a href="https://www.sfoutsidelands.com/terms-of-use/">Terms of Use | </a>

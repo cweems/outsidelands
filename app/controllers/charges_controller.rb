@@ -14,7 +14,8 @@ class ChargesController < ApplicationController
 
     @metadata = {
       phone_number: @phone_number,
-      first_name: @first_name
+      first_name: @first_name,
+      last_name: @lastName
     }
 
     customer = Stripe::Customer.create(
