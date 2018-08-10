@@ -6,7 +6,16 @@ class ChargesController < ApplicationController
 
   def create
 
-    @amount = 500
+    @amount_param = params[:price_input]
+    @final_amount = @amount_param.to_i * 100
+    @phone_number = params[:phone_number]
+    @first_name = params[:firstName]
+    @last_name = params[:lastName]
+
+    @metadata = {
+      phone_number: @phone_number,
+      first_name: @first_name
+    }
 
     customer = Stripe::Customer.create(
       :source => params[:stripeToken]
@@ -14,12 +23,11 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer     => customer.id,
-      :amount       => @amount,
+      :amount       => @final_amount,
       :description  => 'Rails Stripe customer',
-      :currency     => 'usd'
+      :currency     => 'usd',
+      :metadata => @metadata
     )
-
-
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

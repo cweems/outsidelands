@@ -5,62 +5,78 @@
     </p>
     <div class="text-center">
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label value="500" class="btn btn-lg btn-primary price-button">
-          <input type="radio" name="options" id="option1" autocomplete="off"> $5
-        </label>
-        <label value="1000" class="btn btn-lg btn-primary price-button">
+        <label value="10" class="btn btn-lg btn-primary price-button">
           <input type="radio" name="options" id="option2" autocomplete="off"> $10
         </label>
-        <label value="2000" class="btn btn-lg btn-primary price-button">
-          <input type="radio" name="options" id="option3" autocomplete="off"> $20
+        <label value="25" class="btn btn-lg btn-primary price-button">
+          <input type="radio" name="options" id="option3" autocomplete="off"> $25
         </label>
-        <label value="5000" class="btn btn-lg btn-primary price-button">
+        <label value="50" class="btn btn-lg btn-primary price-button">
           <input type="radio" name="options" id="option3" autocomplete="off"> $50
+        </label>
+        <label value="custom" class="btn btn-lg btn-primary price-button">
+          <input type="radio" name="options" id="option3" autocomplete="off"> Other
         </label>
       </div>
     </div>
-    <div class="row">
+    <div id="chosen-donation-amount" class="row" style="display: none">
       <div class="col-12 mt-3">
-        <label class="text-secondary">Phone number</label>
-        <input id="phone-input" class="form-control form-control-lg" style="text-align: center" type="text" value="<%=@phone_number%>">
+        <label class="text-secondary">Custom donation amount</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">$</span>
+          </div>
+          <input id="amount-input" name="amountInput" pattern="[0-9]" class="form-control form-control-lg" type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+          <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12 mt-3">
         <label class="text-secondary">First Name</label>
-        <input id="first-name" class="form-control form-control-lg" type="text" value="">
+        <input id="first-name" name="firstName" class="form-control form-control-lg" type="text" value="">
       </div>
     </div>
     <div class="row">
       <div class="col-12 mt-3">
         <label class="text-secondary">Last Name</label>
-        <input id="last-name" class="form-control form-control-lg" type="text" value="">
+        <input id="last-name" name="lastName" class="form-control form-control-lg" type="text" value="">
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-12">
-        <label class="text-secondary">Payment</label>
-        <div id="card-element" class="form-control form-control-lg">
-        <!-- A Stripe Element will be inserted here. -->
-        </div>
-      <div>
-    </div>
 
-    <div class="row">
-      <div class="col-12">
-        <div id="card-errors" role="alert"></div>
-      <div>
-    </div>
+    <input id="price-input" name="price_input" type="hidden" value="">
+    <input id="phone-number-input" name="phone_number" type="hidden" value="<%=@phone_number%>">
+    <input id="first-name-input" name="first_name" type="hidden" value="">
+    <input id="last-name-input" name="last_name" type="hidden" value="">
 
-    <div class="row">
-      <div class="col">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Payment</button>
-      <div>
-    </div>
+    <input id="stripe-token" name="stripeToken" type="hidden" value="">
 
-    <input id="price-input" type="hidden" value="">
+
 
 <% end %>
+
+<div class="cell example example4">
+  <form>
+    <div id="example4-paymentRequest">
+      <!--Stripe paymentRequestButton Element inserted here-->
+    </div>
+    <fieldset>
+      <legend class="card-only" data-tid="elements_examples.form.pay_with_card">Pay with card</legend>
+      <legend class="payment-request-available" data-tid="elements_examples.form.enter_card_manually">Or enter card details</legend>
+      <div class="container">
+        <div id="example4-card"></div>
+        <button type="submit" data-tid="elements_examples.form.donate_button">Donate</button>
+      </div>
+    </fieldset>
+    <div class="error" role="alert"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+      <path class="base" fill="#000" d="M8.5,17 C3.80557963,17 0,13.1944204 0,8.5 C0,3.80557963 3.80557963,0 8.5,0 C13.1944204,0 17,3.80557963 17,8.5 C17,13.1944204 13.1944204,17 8.5,17 Z"></path>
+      <path class="glyph" fill="#FFF" d="M8.5,7.29791847 L6.12604076,4.92395924 C5.79409512,4.59201359 5.25590488,4.59201359 4.92395924,4.92395924 C4.59201359,5.25590488 4.59201359,5.79409512 4.92395924,6.12604076 L7.29791847,8.5 L4.92395924,10.8739592 C4.59201359,11.2059049 4.59201359,11.7440951 4.92395924,12.0760408 C5.25590488,12.4079864 5.79409512,12.4079864 6.12604076,12.0760408 L8.5,9.70208153 L10.8739592,12.0760408 C11.2059049,12.4079864 11.7440951,12.4079864 12.0760408,12.0760408 C12.4079864,11.7440951 12.4079864,11.2059049 12.0760408,10.8739592 L9.70208153,8.5 L12.0760408,6.12604076 C12.4079864,5.79409512 12.4079864,5.25590488 12.0760408,4.92395924 C11.7440951,4.59201359 11.2059049,4.59201359 10.8739592,4.92395924 L8.5,7.29791847 L8.5,7.29791847 Z"></path>
+    </svg>
+    <span class="message"></span></div>
+  </form>
+</div>
 
 
 <%= javascript_include_tag 'application' %>
