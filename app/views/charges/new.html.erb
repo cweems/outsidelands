@@ -5,16 +5,16 @@
     </p>
     <div class="text-center">
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-lg btn-primary">
+        <label value="500" class="btn btn-lg btn-primary price-button">
           <input type="radio" name="options" id="option1" autocomplete="off"> $5
         </label>
-        <label class="btn btn-lg btn-primary active">
+        <label value="1000" class="btn btn-lg btn-primary price-button">
           <input type="radio" name="options" id="option2" autocomplete="off"> $10
         </label>
-        <label class="btn btn-lg btn-primary">
+        <label value="2000" class="btn btn-lg btn-primary price-button">
           <input type="radio" name="options" id="option3" autocomplete="off"> $20
         </label>
-        <label class="btn btn-lg btn-primary">
+        <label value="5000" class="btn btn-lg btn-primary price-button">
           <input type="radio" name="options" id="option3" autocomplete="off"> $50
         </label>
       </div>
@@ -43,9 +43,11 @@
 
     <div class="row">
       <div class="col">
-        <button type="submit" class="btn btn-primary">Submit Payment</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Payment</button>
       <div>
     </div>
+
+    <input id="price-input" type="hidden" value="">
 
 <% end %>
 

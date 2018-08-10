@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+  $('.price-button:nth-child(2)').addClass('active');
+
+  $('.price-button').click(function(e){
+    $('.price-button').removeClass('active');
+    $('#price-input').val(this.value)
+    $(this).addClass('active');
+  });
+
   var cleave = new Cleave('#phone-input', {
     delimiters: ['(', ') ', '-'],
     blocks: [2, 3, 3, 4],
@@ -47,7 +55,6 @@ $(document).ready(function(){
   // Handle form submission
   var form = document.getElementById('payment-form');
   form.addEventListener('submit', function(event) {
-    console.log('submit')
     event.preventDefault();
 
     stripe.createToken(card).then(function(result) {
